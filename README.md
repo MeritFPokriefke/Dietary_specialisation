@@ -99,8 +99,7 @@ This structure enables direct traceability from scripts to model outputs, figure
 │   │   ├── M4_all_diet_var_090925.csv          # Variation in general diet
 │   │   ├── M4_G_diet_var_090925.csv            # Variation in general diet
 │   │   ├── M_avail_020925.csv                  # Identification prefered prey in diet
-│   │   ├── M_avail_020925.rds                  # Identification prefered prey in diet
-│   │   ├── M_All_pdiet_var_040925.csv          # Variation in preferred prey
+│   │   ├── M_avail_020925.rds                  # Identification prefered prey in diet (see Notes)
 │   │   ├── M_B_pdiet_var_040925.csv            # Variation in preferred prey
 │   │   ├── M_G_pdiet_var_040925.csv            # Variation in preferred prey
 │   │   ├── M2_All_pdiet_var_040925.csv         # Variation in preferred prey
@@ -108,9 +107,9 @@ This structure enables direct traceability from scripts to model outputs, figure
 │   │   ├── M2_G_pdiet_var_040925.csv           # Variation in preferred prey
 │   │   ├── M_All_Pers_diet_040925.csv          # Prediction 1
 │   │   ├── M_B_Pers_diet_040925.csv            # Prediction 1
-│   │   ├── M_B_Pers_diet_040925.rds            # Prediction 1
+│   │   ├── M_B_Pers_diet_040925.rds            # Prediction 1 (see Notes)
 │   │   ├── M_G_Pers_diet_040925.csv            # Prediction 1
-│   │   ├── M_G_Pers_diet_040925.rds            # Prediction 1
+│   │   ├── M_G_Pers_diet_040925.rds            # Prediction 1 (see Notes)
 │   │   ├── M_B_Female_Pers_dietC_040925.csv    # Prediction 2
 │   │   ├── M_B_Male_Pers_dietC_040925.csv      # Prediction 2
 │   │   ├── M_G_Female_Pers_dietC_040925.csv    # Prediction 2
@@ -118,7 +117,7 @@ This structure enables direct traceability from scripts to model outputs, figure
 │   │   ├── M_B_Suc_Diet_240925.csv             # Prediction 3
 │   │   ├── M_G_Suc_Diet_240925.csv             # Prediction 3
 │   │   ├── M_B_Weight_Diet_230626.csv          # Prediction 3
-│   │   ├── M_G_Weight_Diet_230626.cs           # Prediction 3
+│   │   ├── M_G_Weight_Diet_230626.csv          # Prediction 3
 │   │   ├── M_B_Indiv_Weight_Diet_240626.csv    # Prediction 3
 │   │   └── M_B_Indiv_Weight_Diet_240626.csv    # Prediction 3
 
@@ -393,6 +392,8 @@ Model outputs are stored in the `Output/Models/` directory and are named accordi
 ## Notes
 
 Running time of models varies between 2 min and ~14 hours depending on the complexity (e.g. loop). Used seeds are noted in the STAN model quantification.
+
+The `.rds` files required for plotting are not included in this repository because they exceed GitHub's file size limits. To obtain these files, run the model scripts locally and save the resulting objects as `.rds` files before generating plots.
 
 ## License
 Unless otherwise noted, all source code in this repository is licensed under MIT. Data contained in the data/ directory are licensed under CC BY 4.0.
