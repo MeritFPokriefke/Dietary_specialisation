@@ -1,0 +1,61 @@
+
+#CONDA_SUBDIR=osx-64 conda create -n cutadapt -c bioconda cutadapt
+#conda activate cutadaptenv
+#cutadapt --version
+
+
+# for f in RV-TUM_2022_001_*; do  mv "$f" "${f/RV-TUM_2022_001_/RV-TUM-2022-001-}"; done
+
+# Data information
+datasupplier="Merit, Niels (LMU)"             # who leads the project or provided data
+dataprocessor="Alexander Keller (LMU)"            # who processed the data
+
+# Reference Databases (direct), in priority order
+refDBs[1]=/Users/ra39huv/TMP/Tools_Dev/database_curator_generic/data/coi.BOLD.2025-05-02.GBIF_20230724.genus.DE.fa #data/coi.BOLD.2025-05-02.GBIF_20230724_Germany2.fa
+refDBs[2]=/Users/ra39huv/TMP/Tools_Dev/database_curator_generic/data/coi.BOLD.2025-05-02.GBIF_20230724.genus.Alpine.fa #data/coi.BOLD.2025-05-02.GBIF_20230724_Alpine2.fa
+refDBs[3]=/Users/ra39huv/TMP/Tools_Dev/database_curator_generic/data/coi.BOLD.2025-05-02.GBIF_20230724.genus.Europe.de #data/coi.BOLD.2025-05-02.GBIF_20230724_Europe2.fa
+refDBs[4]=/Users/ra39huv/TMP/Tools_Dev/database_curator_generic/data/coi.BOLD.2025-05-02.GBIF_20230724.genus.fa
+
+# Reference Database (hierarchical) for incomplete taxonomies as deep as possible
+hieDBs="/Users/ra39huv/TMP/Tools_Dev/database_curator_generic/data/coi.BOLD.2025-05-02.GBIF_20230724.family2.fa"
+
+# Script parameters (0 = no, 1 = yes)
+threads=7             # how many cores to use
+use_fw_only=0           # in case of bad quality reverse reads, skip merging and proceed with fw only but quality truncated
+skip_preprocessing=0    # to continue after already done preprocessing, necessary files need to be present
+skip_primerremoval=0    # to continue after already done preprocessing, necessary files need to be present
+classificationOnly=0    # only reclassification, necessary files need to be present
+compressionCleanup=0   # compress large files at the end, as well as log, raw and tmp folders
+blastalternateclass=0   # have blast done with the same databases as an alternative classification method.
+                        # Beware, particularly the final webblast can take a long time and requires a stable internet connection
+phylogeny=0             # whether to do a phylogenetic tree of ASV for e.g. UniFrac
+use_blast_sintax_combination=1
+use_blast_sintax_combination_greedy=0
+
+# Processing parameters (default ITS2)
+marker="COI-5P"           # these all are marker specific choices
+merge_minovlen=20
+merge_maxdiffs=10
+fastq_minlen=200
+fastq_minlen2=140
+fastq_maxlen=500
+fastq_maxns=0
+fastq_maxee=0.5
+fastq_truncee=1
+stripleft=0            # in case of adapters
+stripright=0         # in case of adapters
+unoisealpha=2
+cutend_fw=250       # number of bases to keep
+cutend_rv=250      # number of bases to keep
+mergeoptions=""    # if you need to pass other parameters to merge
+postcluster=97 # leave 0 for no postclustering of ASVs, otherwise percent identity in integer
+
+
+tax_threshold=97        # perc identity threshold for classification
+sintax_cutoff=0.9
+
+# Paths to binaries, setting the path for the binaries on your system
+seqfilter=~/Documents/Arbeit/Projects/Metabarcoding/Bins/SeqFilter/bin/SeqFilter
+pythonscripts=~/Documents/Arbeit/Projects/Metabarcoding/Bins/uchime/python_scripts
+vsearch=~/Documents/Arbeit/Projects/Metabarcoding/Bins/vsearch
+blast=/usr/local/ncbi/blast/bin/blastn
